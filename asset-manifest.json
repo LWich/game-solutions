@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/game-solutions/static/css/main.c210ea9d.css",
+    "main.js": "/game-solutions/static/js/main.afaeaa12.js",
+    "index.html": "/game-solutions/index.html",
+    "main.c210ea9d.css.map": "/game-solutions/static/css/main.c210ea9d.css.map",
+    "main.afaeaa12.js.map": "/game-solutions/static/js/main.afaeaa12.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c210ea9d.css",
+    "static/js/main.afaeaa12.js"
+  ]
+}
