@@ -6,14 +6,17 @@ import {FormGroup} from '@mui/material'
 import {FormControlLabel} from '@mui/material'
 import {RadioGroup} from '@mui/material'
 import {Radio} from '@mui/material'
+import { useNavigate } from "react-router-dom";
 const Brief  = () => {
+    const navigate = useNavigate();
+
     const tg = window.Telegram.WebApp;
 
     tg.expand();
 
     tg.BackButton.show();
     tg.BackButton.onClick(() => {
-        window.history.back()
+        navigate('/');
     });
 
     const data = tg.initDataUnsafe;
@@ -36,6 +39,11 @@ const Brief  = () => {
     const [priorities, setPriorities] = useState('');
     const [importantThings, setImportantThings] = useState('');
     const [otherThings, setOtherThings] = useState('');
+
+    const [taskOfGameStyle, setTaskOfGameStyle] = useState('other__input hide');
+    const [taskOfGameInput, setTaskOfGameInput] = useState('');
+    const [gameStyleCSS, setGameStyleCSS] = useState('other__input hide');
+    const [gameStyleInput, setGameStyleInput] = useState('');
 
     const formatPrice = (price) => {
         return new Intl.NumberFormat('ru-RU').format(price);
@@ -78,11 +86,11 @@ const Brief  = () => {
             'name': name,
             'email': email,
             'telegram': telegram,
-            'taskOfGame': taskOfGame,
+            'taskOfGame': taskOfGame ? taskOfGame !== 'Другое' : taskOfGameInput,
             'shortDescription': shortDescription,
             'gameAudience': gameAudience,
             'graphicsType': graphicsType,
-            'gameStyle': gameStyle,
+            'gameStyle': gameStyle ? gameStyle !== 'Другое' : gameStyleInput,
             'isOnline': isOnline,
             'otherServices': otherServices,
             'hasDevelopments': hasDevelopments,
@@ -173,7 +181,15 @@ const Brief  = () => {
                         </div>
                         <FormGroup className='brief__test-answs'>
                             <RadioGroup
-                                onChange={(event) => {setTaskOfGame(event.target.value)}}
+                                onChange={(event) => {
+                                    console.log(event.target.value)
+                                    if(event.target.value === 'Другое') {
+                                        setTaskOfGameStyle('visiable other__input')
+                                    } else {
+                                        setTaskOfGameStyle('other__input hide')
+                                    }
+                                    setTaskOfGame(event.target.value)
+                                }}
                                 aria-labelledby="company-goal"
                                 name="radio-buttons-group">
                                     
@@ -199,15 +215,13 @@ const Brief  = () => {
                                     label="Инновации, образование"
                                     className='brief__test-answ'/>
                                 <FormControlLabel 
-                                    value='Другое...'
+                                    value='Другое'
                                     control={<Radio required={true} />}
-                                    label="Другое... "
+                                    label="Другое "
                                     className='brief__test-answ'/>
                             </RadioGroup>
                         </FormGroup>
-                      
-
-                        
+                        <input placeholder='Другое' className={taskOfGameStyle} onChange={(event) => {setTaskOfGameInput(event.target.value)}}></input>
                    </div>
 
                    <div className="brief__long-quest">
@@ -263,7 +277,14 @@ const Brief  = () => {
                         
                         </div>
                         <FormGroup className='brief__test-answs'>
-                            <RadioGroup onChange={(event) => {setGameStyle(event.target.value)}}>
+                            <RadioGroup onChange={(event) => {
+                                if(event.target.value === 'Другое') {
+                                    setGameStyleCSS('visiable other__input')
+                                } else {
+                                    setGameStyleCSS('other__input hide')
+                                }
+                                setGameStyle(event.target.value)
+                                }}>
                                 <FormControlLabel
                                     value='Мультяшный стиль'
                                     control={<Radio />}
@@ -286,6 +307,7 @@ const Brief  = () => {
                                     className='brief__test-answ'/>
                             </RadioGroup>
                         </FormGroup>  
+                        <input placeholder='Другое' className={gameStyleCSS} onChange={(event) => {setGameStyleInput(event.target.value)}}></input>
                    </div>
 
                    <div className="brief__test">
@@ -324,7 +346,11 @@ const Brief  = () => {
                                     control={<Radio />}
                                     label="Да" 
                                     className='brief__test-answ'/>
-                                
+                                <FormControlLabel
+                                    value='Cервисы не нужны'
+                                    control={<Radio />}
+                                    label="Нет" 
+                                    className='brief__test-answ'/>
                                 
                             </RadioGroup>
                         </FormGroup>  
@@ -341,6 +367,11 @@ const Brief  = () => {
                                     value='Присутствуют наработки'
                                     control={<Radio />}
                                     label="Да" 
+                                    className='brief__test-answ'/>
+                                <FormControlLabel
+                                    value='Наработок нету'
+                                    control={<Radio />}
+                                    label="Нет" 
                                     className='brief__test-answ'/>
                             </RadioGroup>
                         </FormGroup>  

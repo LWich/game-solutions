@@ -50,6 +50,20 @@ form {
     justify-content: center;
 }
 
+.other__input {
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px 12px;
+}
+
+.hide {
+    display: none;
+}
+
+.visiable {
+    display: block;
+}
+
 .brief__naming-block {
     display: flex;
     align-items: center;
