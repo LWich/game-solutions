@@ -9,18 +9,22 @@ import {Radio} from '@mui/material'
 const Brief  = () => {
     const tg = window.Telegram.WebApp;
 
+    tg.expand();
+
     tg.BackButton.show();
     tg.BackButton.onClick(() => {
         window.history.back()
     });
+
+    const data = tg.initDataUnsafe;
    
     const [minPrice, setMinPrice] = useState(50000);
     const [maxPrice, setMaxPrice] = useState(5000000);
     const [minDays, setMinDays] = useState(3);
     const [maxDays, setMaxDays] = useState(365);
-    const [name, setName] = useState('');
+    const [name, setName] = useState(data.user.first_name);
     const [email, setEmail] = useState('');
-    const [telegram, setTelegram] = useState('');
+    const [telegram, setTelegram] = useState(data.user.username);
     const [taskOfGame, setTaskOfGame] = useState('');
     const [shortDescription, setShortDescription] = useState('');
     const [gameAudience, setGameAudience] = useState('');
@@ -67,8 +71,8 @@ const Brief  = () => {
 
     const handleSubmit = ( event ) => {
         const data = {
-            'minPrice': minPrice,
-            'maxPrice': maxPrice,
+            'minPrice': formatPrice(minPrice),
+            'maxPrice': formatPrice(maxPrice),
             'minDays': minDays,
             'maxDays': maxDays,
             'name': name,
@@ -145,19 +149,19 @@ const Brief  = () => {
                     <div className="brief-naming">
                         <div className="brief__naming-block">
                             [#]
-                            <input required placeholder='Ваше имя...' onChange={(event) => setName(event.target.value)}>
+                            <input required placeholder='Ваше имя...' value={name} onChange={(event) => setName(event.target.value)}>
 
                             </input>
                         </div>
                         <div className="brief__naming-block">
                             [#]
-                            <input required placeholder='Ваш телеграм...' onChange={(event) => setTelegram(event.target.value)}>
+                            <input required placeholder='Ваш телеграм...' value={telegram} onChange={(event) => setTelegram(event.target.value)}>
 
                             </input>
                         </div>
                         <div className="brief__naming-block">
                             [#]
-                            <input required placeholder='Ваша почта...' onChange={(event) => setEmail(event.target.value)}>
+                            <input placeholder='Ваша почта...' onChange={(event) => setEmail(event.target.value)}>
 
                             </input>
                         </div>
@@ -175,28 +179,28 @@ const Brief  = () => {
                                     
                                 <FormControlLabel 
                                     value='Привлечение новой аудитории' 
-                                    control={<Radio />} 
+                                    control={<Radio required={true} />} 
                                     label="Привлечение новой аудитории"  
                                     className='brief__test-answ'/>
                                 <FormControlLabel 
                                     value='Получение прибыли' 
-                                    control={<Radio />} 
+                                    control={<Radio required={true} />} 
                                     label="Получение прибыли"
                                     className='brief__test-answ' 
                                     aria-label='12'/>
                                 <FormControlLabel 
                                     value='Реализация идей, амбиций, культурных ценностей'
-                                    control={<Radio />}
+                                    control={<Radio required={true} />}
                                     label="Реализация идей, амбиций, культурных ценностей"
                                     className='brief__test-answ'/>
                                 <FormControlLabel 
                                     value='Инновации, образование'
-                                    control={<Radio />}
+                                    control={<Radio required={true} />}
                                     label="Инновации, образование"
                                     className='brief__test-answ'/>
                                 <FormControlLabel 
                                     value='Другое...'
-                                    control={<Radio />}
+                                    control={<Radio required={true} />}
                                     label="Другое... "
                                     className='brief__test-answ'/>
                             </RadioGroup>
@@ -370,7 +374,7 @@ const Brief  = () => {
                         </textarea>
                    </div>
 
-                   <button type ='submit' className = 'submit'>ОТПРАВИТЬ</button>
+                   <button type ='submit' className='submit'>ОТПРАВИТЬ</button>
                 </form>
             </div>
         </div>

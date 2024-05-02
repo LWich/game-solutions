@@ -10,6 +10,11 @@ import GamePreview from "../Game/game"
 import './gameMenu.css'
 
 const Menu = () => {
+    const tg = window.Telegram.WebApp;
+
+    tg.BackButton.hide();
+    tg.expand();
+
     async function createList(){
         const data = await loadGames()
         const list = []

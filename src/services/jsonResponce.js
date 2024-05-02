@@ -1,10 +1,8 @@
+import games from '../db.json';
 
 async function loadGames() {
     try{
-        const responce = await fetch('https://web-app-server-six.vercel.app/games')
-        const data = await responce.json()
-
-        return data
+        return games.games;
     }
    
     catch(err){
