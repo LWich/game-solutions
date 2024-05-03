@@ -34,7 +34,7 @@
     {
       "name": "Megafon",
       "desc": "Промо игра для мегафона",
-      "playLink": "https://egor-ignakhin.github.io/MegafonGame/",
+      "playLink": "https://lwich.github.io/MegafonGame/",
       "imagePath": "./data/img5.png",
       "buttonType": "play-button",
       "gameStatus": "Играть"

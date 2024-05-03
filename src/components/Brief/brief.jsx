@@ -27,7 +27,7 @@ const Brief  = () => {
     const [maxDays, setMaxDays] = useState(365);
     const [name, setName] = useState(data.user.first_name);
     const [email, setEmail] = useState('');
-    const [telegram, setTelegram] = useState(data.user.username);
+    const [telegram, setTelegram] = useState('@' + data.user.username);
     const [taskOfGame, setTaskOfGame] = useState('');
     const [shortDescription, setShortDescription] = useState('');
     const [gameAudience, setGameAudience] = useState('');
@@ -78,6 +78,8 @@ const Brief  = () => {
       };
 
     const handleSubmit = ( event ) => {
+        event.preventDefault();
+
         const data = {
             'minPrice': formatPrice(minPrice),
             'maxPrice': formatPrice(maxPrice),
@@ -86,11 +88,11 @@ const Brief  = () => {
             'name': name,
             'email': email,
             'telegram': telegram,
-            'taskOfGame': taskOfGame ? taskOfGame !== 'Другое' : taskOfGameInput,
+            'taskOfGame': taskOfGame !== 'Другое' ? taskOfGame : taskOfGameInput,
             'shortDescription': shortDescription,
             'gameAudience': gameAudience,
             'graphicsType': graphicsType,
-            'gameStyle': gameStyle ? gameStyle !== 'Другое' : gameStyleInput,
+            'gameStyle': gameStyle !== 'Другое' ? gameStyle : gameStyleInput,
             'isOnline': isOnline,
             'otherServices': otherServices,
             'hasDevelopments': hasDevelopments,
@@ -99,7 +101,15 @@ const Brief  = () => {
             'otherThings': otherThings,
         };
 
-        tg.sendData(JSON.stringify(data));
+        fetch('https://telegram-middleware-send-message.onrender.com/send-message/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(data => {
+            navigate('/')
+        });
     }
 
     return (
@@ -156,19 +166,19 @@ const Brief  = () => {
 
                     <div className="brief-naming">
                         <div className="brief__naming-block">
-                            [#]
+                            Имя:
                             <input required placeholder='Ваше имя...' value={name} onChange={(event) => setName(event.target.value)}>
 
                             </input>
                         </div>
                         <div className="brief__naming-block">
-                            [#]
+                            TG:
                             <input required placeholder='Ваш телеграм...' value={telegram} onChange={(event) => setTelegram(event.target.value)}>
 
                             </input>
                         </div>
                         <div className="brief__naming-block">
-                            [#]
+                            Email:
                             <input placeholder='Ваша почта...' onChange={(event) => setEmail(event.target.value)}>
 
                             </input>
@@ -405,7 +415,7 @@ const Brief  = () => {
                         </textarea>
                    </div>
 
-                   <button type ='submit' className='submit'>ОТПРАВИТЬ</button>
+                   <button type ='submit' onClick={handleSubmit} className='submit'>ОТПРАВИТЬ</button>
                 </form>
             </div>
         </div>
