@@ -8,6 +8,11 @@ import {RadioGroup} from '@mui/material'
 import {Radio} from '@mui/material'
 import { useNavigate } from "react-router-dom";
 const Brief  = () => {
+    function ping() {
+        fetch('https://telegram-middleware-send-message.onrender.com/').then(data => console.log(data));
+    }
+    ping()
+    
     const navigate = useNavigate();
 
     const tg = window.Telegram.WebApp;

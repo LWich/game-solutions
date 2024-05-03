@@ -2,7 +2,7 @@
     {
         "name": "Space Runner",
         "desc": "Улети с космической станции, убивая врагов!",
-        "playLink": "https://egor-ignakhin.github.io/SpaceRunnerWebPage/",
+        "playLink": " https://lwich.github.io/SpaceRunnerWebPage/",
         "imagePath": "./data/img1.png",
         "buttonType": "play-button",
         "gameStatus": "Играть"
