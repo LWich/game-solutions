@@ -49,6 +49,10 @@ const Menu = () => {
                     <tbody>
                         {gameContent}
                     </tbody>
+                   
+                    
+                </table>
+                <div className='wheelCont'>
                     <Link to={'/wheel'} className={"wheel"}>
                         <img src='assets/images/arrow.png' alt='wheel'></img>
                         <div className={"downContainer"}>
@@ -57,7 +61,7 @@ const Menu = () => {
                         </div>
                         
                     </Link>
-                </table>
+                    </div>
             </section> 
             <Link to="/brief" id="order-button">Заказать игру</Link>
         </div>       
