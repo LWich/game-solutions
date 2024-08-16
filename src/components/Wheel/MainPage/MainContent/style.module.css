@@ -1,0 +1,20 @@
+.banner {
+    padding: 10px;
+    background: #d5eafc;
+    border-radius: 15px;
+    font-weight: 500;
+}
+
+.button {
+    background: #008aff;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color:#fff;
+    border:none;
+    font-size:22px;
+    margin-top: 10px;
+}
+
+h1 {
+    margin-bottom:20px;
+}

@@ -2,3 +2,28 @@
     max-width: 590px;
     margin: 0 auto;
 }
+.wheel {
+    background: rgb(19,141,248);
+    background: linear-gradient(135deg, rgba(19,141,248,1) 30%, rgba(84,180,239,1) 77%);
+    width: 200px;
+    height: 120px;
+    display: block;
+    border-radius: 20px;
+    color:#fff;
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.wheel img {
+    width: 30px;
+    height: 30px;
+}
+
+.downContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
