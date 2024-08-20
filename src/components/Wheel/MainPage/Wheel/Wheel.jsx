@@ -39,7 +39,7 @@ function Wheel() {
 
   function startVibration() {
     vibrationInterval = setInterval(() => {
-      // Код для включения вибрации
+      window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
       console.log("Вибрация включена");
     }, 200); // Интервал 200 миллисекунд (0.2 секунды)
   }

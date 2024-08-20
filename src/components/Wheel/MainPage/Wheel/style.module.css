@@ -45,3 +45,9 @@
     margin-top:40px;
     border:1px solid #000
 }
+
+@media (max-height:700px) {
+    .container {
+        transform: scale(0.8);
+    }
+}
