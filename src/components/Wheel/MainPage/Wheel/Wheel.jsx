@@ -8,7 +8,7 @@ const tg = window.Telegram.WebApp;
 function Wheel() {
   const [vis, setVis] = useState(false);
   const [prise, setPrise] = useState(0);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(24 * 3600);
   const [animation, setAnimation] = useState('');
   const smallPrise = 4;
   const mediumPrise = 20;
@@ -33,14 +33,31 @@ function Wheel() {
         
       }
     }, 1000);
-  }, [time])
+  }, [time]);
+
+  let vibrationInterval;
+
+  function startVibration() {
+    vibrationInterval = setInterval(() => {
+      // Код для включения вибрации
+      console.log("Вибрация включена");
+    }, 200); // Интервал 200 миллисекунд (0.2 секунды)
+  }
+  
+  // Остановка вибрации через 5 секунд
+  function stopVibration() {
+    clearInterval(vibrationInterval);
+    console.log("Вибрация остановлена");
+  }
 
   const handleSpin = async () => {
+    console.log(1234);
 
-    const data = await twist(tg?.initDataUnsafe?.user?.id);
+    
+    //const data = await twist(tg?.initDataUnsafe?.user?.id);
 
-    setTime(data.time);
-    const requiredPrize = data.prise; 
+    setTime(0);
+    const requiredPrize = 20; 
 
     const getRandomIndexForPrize = (prises, requiredPrize) => {
 
@@ -55,6 +72,12 @@ function Wheel() {
     
       return randomIndex;
     };
+
+    startVibration();
+
+  // Остановить вибрацию через 5 секунд
+  setTimeout(stopVibration, 4500);
+
 
     const randomIndex = getRandomIndexForPrize(prises, requiredPrize);
 
