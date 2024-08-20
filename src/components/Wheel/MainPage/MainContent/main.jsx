@@ -14,7 +14,7 @@ const MainPageCont = observer(() => {
         <h1>Время призов</h1>
         <div className={cls.banner}>
             <div>
-                <span className={cls.coins}>Баланс:{user.coins}</span>
+                <span className={cls.coins}>Баланс:{user.coins} TON</span>
             </div>
             <button className={cls.button} onClick={() => {setVis(true)}}>Вывести</button>
         </div>
