@@ -43,11 +43,11 @@ function Modal({ coins, vis, setVis }) {
         <div className={rootClasses.join(' ')}>
             <div className={cls.countCont}>
                 <div className={cls.count}>
-                    <img src='/assets/icons/coin.png' alt='coin'></img>
+                    <img src='./assets/icons/coin.png' alt='coin'></img>
                     <span>{cointCoins} TON</span>
                 </div>
             </div>
-                <img className={cls.coinBig} src='.//assets/icons/coin.png'></img>
+                <img className={cls.coinBig} src='./assets/icons/coin.png'></img>
             <span className={cls.mainText}>Вы выиграли {coins} TON</span>
             
             <div className={cls.down}>
