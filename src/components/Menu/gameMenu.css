@@ -34,3 +34,20 @@
     width: 100vw;
     margin-top: 50px;
 }
+
+.wheelImg {
+    animation: spin 3s ease infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    90% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    
+}

@@ -54,7 +54,7 @@ const Menu = () => {
                 </table>
                 <div className='wheelCont'>
                     <Link to={'/wheel'} className={"wheel"}>
-                        <img src='assets/images/wheel.png' alt='wheel'></img>
+                        <img className='wheelImg' src='assets/images/wheel.png' alt='wheel'></img>
                         <div className={"downContainer"}>
                             <span>Крути колесо</span>
                             <span>></span>
