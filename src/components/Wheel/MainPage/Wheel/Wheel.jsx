@@ -87,7 +87,7 @@ function Wheel() {
 
     const styleSheet = document.styleSheets[0];
     const keyframes = `
-      @keyframes spin {
+      @keyframes spins {
         0% {
           transform: rotate(0deg);
         }
@@ -110,7 +110,7 @@ function Wheel() {
 
     styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
 
-    setAnimation(`spin 5s ease-in-out`);
+    setAnimation(`spins 5s ease-in-out`);
 
     setTimeout(() => {
       setVis(true);

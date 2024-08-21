@@ -27,10 +27,12 @@ function Modal({ coins, vis, setVis }) {
     }, [coinsVis]); 
 
     function saveCoins() {
+        if(coinsVis) return;
         setVis(false);
         setCoinsVis(true);
         console.log(user.coins, coins)
         user.setCoins(user.coins + coins)
+        return;
     }
 
     const rootClasses = [cls.back];
